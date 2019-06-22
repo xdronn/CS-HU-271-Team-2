@@ -14,11 +14,11 @@ public class Lexer {
 
 	/* advance input by one character */
 	protected void advance() {
-		if(curr_pos>=input.length()) {
-			next_char=-1;
-		}else {
-		next_char = input.charAt(curr_pos);
-		curr_pos++;
+		if (curr_pos >= input.length()) {
+			next_char = -1;
+		} else {
+			next_char = input.charAt(curr_pos);
+			curr_pos++;
 		}
 	}
 
@@ -51,7 +51,7 @@ public class Lexer {
 					i_val = i_val * 10 + (next_char - '0');
 					advance();
 				} while (next_char >= '0' && next_char <= '9');
-				return sf.newSymbol("NUMBER", sym.NUMBER, new Integer(i_val));
+				return sf.newSymbol("NUMBER", sym.NUMBER, new Double(i_val));
 
 			case ';':
 				advance();
@@ -71,6 +71,15 @@ public class Lexer {
 			case ')':
 				advance();
 				return sf.newSymbol("RPAREN", sym.RPAREN);
+			case 's':
+				if (input.substring(curr_pos, curr_pos + 4).contentEquals("sqrt")) {
+					curr_pos += 3;
+					advance();
+					return sf.newSymbol("SQRT", sym.SQRT);
+				}else {
+					advance();
+					break;
+				}
 
 			case -1:
 				return sf.newSymbol("EOF", sym.EOF);

@@ -15,12 +15,12 @@ init with {: lex.init(); :};
 scan with {: return lex.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
-terminal            SEMI, PLUS, MINUS, TIMES, UMINUS, LPAREN, RPAREN;
-terminal Integer    NUMBER;        // our scanner provides numbers as integers
+terminal            SEMI, PLUS, MINUS, TIMES, UMINUS, LPAREN, RPAREN, SQRT;
+terminal Double    NUMBER;        // our scanner provides numbers as integers
 
 /* Non terminals */
 non terminal            stmt;
-non terminal Integer    expr;      // used to store evaluated subexpressions
+non terminal Double    expr;      // used to store evaluated subexpressions
 
 /* Precedences */
 precedence left PLUS, MINUS;
@@ -33,8 +33,8 @@ stmt ::=  expr:e        {: parser.result=e.toString();:} | /*empty*/
 expr      ::= expr:e1 PLUS  expr:e2         {: RESULT = e1+e2;       :}
              | expr:e1 MINUS expr:e2        {: RESULT = e1-e2;       :}
              | expr:e1 TIMES expr:e2        {: RESULT = e1*e2;       :}
-             | MINUS expr:e                 {: RESULT = -e;          :}
-  	     %prec UMINUS
-       | LPAREN expr:e RPAREN	         {: RESULT = e;           :}
-       | NUMBER:n	                     {: RESULT = n;           :}
+             | MINUS expr:e                 {: RESULT = -e;          :} %prec UMINUS
+       		 | LPAREN expr:e RPAREN	         {: RESULT = e;           :}
+       		 | SQRT LPAREN expr:e RPAREN     {: RESULT = java.lang.Math.sqrt(e);      :}
+             | NUMBER:n	                     {: RESULT = n;           :}
              ;
