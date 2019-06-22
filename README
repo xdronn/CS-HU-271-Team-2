@@ -1,1 +1,8 @@
 this is the read me
+This calculator does the following basic functions:
+Addition, Subtraction, Multiplication, and Square Route. 
+The user enters "+" and number for addition
+User enters "-" and number for subtraction
+User enters "*" and number for multiplication
+User enters "sqrt (" and number and ")" for square root
+Screen will return the calculated value
