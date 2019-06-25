@@ -13,10 +13,8 @@ public class Calculator {
 			while(true) {
 				String input = s.nextLine();
 				String output = eval.getResult(input);
-				System.out.println(output);
-			}
-			
-		
+			}	
 	}
 
 }
+

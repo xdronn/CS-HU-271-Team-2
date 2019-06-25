@@ -71,10 +71,10 @@ public class Lexer {
 			case ')':
 				advance();
 				return sf.newSymbol("RPAREN", sym.RPAREN);
-
+			case 'm':
+				return MatrixMultiplication;
 			case -1:
 				return sf.newSymbol("EOF", sym.EOF);
-
 			default:
 				/* in this simple scanner we just ignore everything else */
 				advance();
