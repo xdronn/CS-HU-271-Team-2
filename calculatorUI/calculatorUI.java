@@ -22,11 +22,11 @@ import javax.swing.text.Document;
  */
 public class calculatorUI {
 	public String query = "";
-	private String lastAns; //TODO
+	private String lastAns; //TODO this will be the output of the backend
 	
 	//UI frame/panel Declarations
 	private JFrame frame = new JFrame();//The window itself; contains the calculator
-	private JPanel numericButtonPanel = new JPanel(); //TODO; Will use GridLayout
+	private JPanel numericButtonPanel = new JPanel(); 
 	private JPanel operatorsButtonPanel = new JPanel();
 	private JTextArea inputTextBox = new JTextArea();
 	
@@ -45,7 +45,7 @@ public class calculatorUI {
 	private JButton button9 = new JButton("9");
 	private JButton buttonDecimal = new JButton(".");
 	private JButton buttonAns = new JButton("Ans");
-	//TODO Action Listeners
+	
 	
 	//operators
 	private JButton buttonAdd = new JButton("+");
@@ -55,7 +55,7 @@ public class calculatorUI {
 	private JButton buttonEql = new JButton("=");
 	private JButton buttonClear = new JButton("C");
 	private JButton buttonBack = new JButton("<-");
-	//TODO Action Listeners
+
 	
 	
 	
@@ -74,7 +74,7 @@ public class calculatorUI {
 		inputTextBox.setSize(310, 100);
 		inputTextBox.setLocation(10,5);
 		inputTextBox.setEditable(false);
-		frame.add(inputTextBox, BorderLayout.NORTH); //TODO place inputTextBox in PAGE_START
+		frame.add(inputTextBox, BorderLayout.NORTH); 
 		
 		//Numeric button panel
 		numericButtonPanel.setLayout(new GridLayout(0,3));
@@ -238,7 +238,7 @@ public class calculatorUI {
 		
 		frame.add(operatorsButtonPanel, BorderLayout.EAST);
 		
-		
+		//TODO Function Buttons
 		
 		//setup complete, show frame
 		frame.setVisible(true); 
