@@ -53,6 +53,7 @@ public class calculatorUI {
 	private JButton buttonSub = new JButton("-");
 	private JButton buttonMult = new JButton("*");
 	private JButton buttonDiv = new JButton("/");
+	private JButton buttonMod = new JButton("%");
 	private JButton buttonEql = new JButton("=");
 	private JButton buttonClear = new JButton("C");
 	private JButton buttonBack = new JButton("<-");
@@ -225,6 +226,14 @@ public class calculatorUI {
 				inputTextBox.append("/");
 			}
 		});
+		
+		operatorsButtonPanel.add(buttonMod);
+		buttonMod.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO: [Issue #5] Enforce only "one in a row"
+				inputTextBox.append("%");
+			}
+		})
 
 		operatorsButtonPanel.add(buttonEql);
 		buttonEql.addActionListener(new ActionListener() {
