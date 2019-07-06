@@ -7,9 +7,15 @@ package calculator;
 public class Evaluator {
 
 	/**
+	 * The context for the parser
+	 */
+	private Context ctx;
+
+	/**
 	 * Create a new Evaluator
 	 */
 	public Evaluator() {
+		ctx = new Context();
 	}
 
 	/**
@@ -18,7 +24,7 @@ public class Evaluator {
 	 */
 	public String getResult(String input) {
 		// parse the input
-		Parser p = new Parser(input);
+		Parser p = new Parser(input, ctx);
 		try {
 			p.parse();
 		} catch (Exception e) {

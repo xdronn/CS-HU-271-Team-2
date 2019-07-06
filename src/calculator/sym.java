@@ -5,12 +5,13 @@
 
 package calculator;
 
-/** CUP generated class containing symbol constants. */
-public class sym {
+/** CUP generated interface containing symbol constants. */
+public interface sym {
   /* terminals */
   public static final int MINUS = 4;
   public static final int UMINUS = 6;
-  public static final int NUMBER = 10;
+  public static final int NUMBER = 11;
+  public static final int ANS = 10;
   public static final int SEMI = 2;
   public static final int EOF = 0;
   public static final int PLUS = 3;
@@ -30,6 +31,7 @@ public class sym {
   "LPAREN",
   "RPAREN",
   "SQRT",
+  "ANS",
   "NUMBER"
   };
 }
