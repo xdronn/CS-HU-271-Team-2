@@ -24,7 +24,6 @@ import calculator.Evaluator;
  */
 public class calculatorUI {
 	public String query = "";
-	private String lastAns; // TODO this will be the output of the backend
 
 	// UI frame/panel Declarations
 	private JFrame frame = new JFrame();// The window itself; contains the calculator
@@ -142,9 +141,9 @@ public class calculatorUI {
 		});
 
 		numericButtonPanel.add(buttonAns);
-		button9.addActionListener(new ActionListener() {
+		buttonAns.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				inputTextBox.append(lastAns);
+				inputTextBox.append("ans");
 			}
 		});
 

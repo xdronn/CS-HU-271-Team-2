@@ -73,11 +73,20 @@ public class Lexer {
 				return sf.newSymbol("RPAREN", sym.RPAREN);
 
 			case 's':
-				if (input.substring(curr_pos, curr_pos + 4).contentEquals("sqrt")) {
+				if (input.substring(curr_pos - 1, curr_pos + 3).contentEquals("sqrt")) {
 					curr_pos += 3;
 					advance();
 					return sf.newSymbol("SQRT", sym.SQRT);
-				}else {
+				} else {
+					advance();
+					break;
+				}
+			case 'a':
+				if (input.substring(curr_pos - 1, curr_pos + 2).equals("ans")) {
+					curr_pos += 2;
+					advance();
+					return sf.newSymbol("ANS", sym.ANS);
+				} else {
 					advance();
 					break;
 				}

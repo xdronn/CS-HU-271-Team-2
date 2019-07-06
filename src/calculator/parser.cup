@@ -5,8 +5,10 @@ parser code {:
     // Connect this parser to a scanner!
     Lexer lex;
     String result;
-    Parser(String input){ 
+    Context ctx;
+    Parser(String input,Context ctx){ 
     this.lex= new Lexer(input); 
+    this.ctx=ctx;
     }
 :}
 
@@ -15,7 +17,7 @@ init with {: lex.init(); :};
 scan with {: return lex.next_token(); :};
 
 /* Terminals (tokens returned by the scanner). */
-terminal            SEMI, PLUS, MINUS, TIMES, UMINUS, LPAREN, RPAREN, SQRT;
+terminal            SEMI, PLUS, MINUS, TIMES, UMINUS, LPAREN, RPAREN, SQRT, ANS;
 terminal Double    NUMBER;        // our scanner provides numbers as integers
 
 /* Non terminals */
@@ -28,7 +30,7 @@ precedence left TIMES;
 precedence left UMINUS;
 
 /* The grammar rules */
-stmt ::=  expr:e        {: parser.result=e.toString();:} | /*empty*/
+stmt ::=  expr:e        {: parser.result=e.toString(); parser.ctx.ans = e; :} | /*empty*/
 ;
 expr      ::= expr:e1 PLUS  expr:e2         {: RESULT = e1+e2;       :}
              | expr:e1 MINUS expr:e2        {: RESULT = e1-e2;       :}
@@ -37,4 +39,5 @@ expr      ::= expr:e1 PLUS  expr:e2         {: RESULT = e1+e2;       :}
        		 | LPAREN expr:e RPAREN	         {: RESULT = e;           :}
        		 | SQRT LPAREN expr:e RPAREN     {: RESULT = java.lang.Math.sqrt(e);      :}
              | NUMBER:n	                     {: RESULT = n;           :}
+             | ANS                           {: RESULT = parser.ctx.ans;        :}
              ;
